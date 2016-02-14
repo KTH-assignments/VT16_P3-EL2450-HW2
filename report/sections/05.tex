@@ -1,18 +1,37 @@
 \section{Question 5}
-
 In the case where $T_1 = 20, T_2 = 29, T_3 = 35$ ms and $C_i = 10$ ms,
-$i=\{1,2,3\}$, $U=0.678$ and $n(2^{1/n} - 1) = 0.78$. Hence tasks $J_1, J_2, J_3$
-are schedulable with RM.
+$i=\{1,2,3\}$, $U=1.131 > 1$. Hence tasks $J_1, J_2, J_3$ are not schedulable
+in any scheduling scheme.
+
 
 \begin{figure}[H]\centering
-  \scalebox{0.7}{\input{./figures/2.gantt.tex}}
-  \caption{A portion of the RM schedule $\sigma$ for tasks $J_1, J_2, J_3$.
-    Shaded areas denote the waiting time.}
+  \scalebox{0.7}{\input{./figures/5.gantt.tex}}
+  \caption{A portion of the RM schedule $\sigma$ for tasks $J_1, J_2, J_3$ for
+    $C_i = 10$ ms.  Shaded areas denote the waiting time. Notice that $J_3$
+    misses its deadlines consecutively, indicative of the inability of
+    schedulability.}
 \end{figure}
+
+All penduli are still stable. However, due to the increased execution time, the
+control input is not as swift as before, hence the increased magnitude of the
+overshoot.
+
+Figure \ref{fig:5.2} shows the angular displacement of each pendulum.
+
+
+
+\begin{figure}[H]\centering
+  \scalebox{1}{\input{./figures/5.2.tex}}
+  \caption{The angular displacement of each pendulum as function of time.
+    \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$, \texttt{Orange}: $P_3$.
+    $C_i = 10$ ms.}
+  \label{fig:5.2}
+\end{figure}
+
 Figure \ref{fig:5.3} shows the schedule calculated for each pendulum with all
 jobs having execution time $C_i = 10$ ms.  Figure \ref{fig:5.4} illustrates that
-the schedule is again feasible by ploting the overall usage of the CPU over the
-aforementioned time span.
+the schedule is not feasible by ploting the overall usage of the CPU over the
+the length of a schedule period, which is at all times $100\%$.
 
 
 \noindent\makebox[\textwidth][c]{%
@@ -30,7 +49,7 @@ aforementioned time span.
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]\centering
     \scalebox{0.7}{\input{./figures/5.4.tex}}
-    \caption{The overall processing usage. Notice that it is at most at $100\%$.
+    \caption{The overall processing usage. Notice that it always at $100\%$.
       $C_i = 10$ ms.}
       \label{fig:5.4}
   \end{figure}
