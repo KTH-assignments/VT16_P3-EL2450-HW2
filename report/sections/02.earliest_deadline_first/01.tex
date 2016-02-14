@@ -1,6 +1,20 @@
 \subsubsection{Question 1}
 
-Rate Monotonic is an scheduling method that assigns fixed priorities to tasks,
-proportional to its activation frequency. That means that for any given tasks
-$J_a,J_b$ with periods $T_a < T_b$, $J_a$ is assigned a higher priority than
-$J_b$.
+In contrast to Rate Monitoring scheduling, Earliest Deadline First scheduling
+assigns dynamic priorities to tasks, introducing a degree of flexibility. The
+task whose deadline is closest to the current timestep is given the highest
+priority and is executed for one time unit.
+
+EDF is more lenient than RM, and this can be seen in the condition that
+identifies it:
+$$U \leq 1 \Leftrightarrow \sigma \text{ is feasible}$$
+whereas in RM
+$$U \leq n (2^{1/n}-1)\ (< 1 \text{ for } n \geq 2) \Rightarrow \sigma \text{ is feasible}$$
+
+This means that if $U \leq 1$ for a certain collection of tasks $\{J_i\}$,
+there is always a feasible schedule for $\{J_i\}$, where the processor is
+utilized to the fullest it can be, whereas the former certainty does not hold
+with RM. However, if certain tasks are indeed more important than others and
+there are extra requirements per their execution, it is possible that EDF
+introduces delays between their release and start times due to the
+indiscrimination it shows to absolute task priorities.
