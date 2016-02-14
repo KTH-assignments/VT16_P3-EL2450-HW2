@@ -1,80 +1,105 @@
 \subsubsection{Question 5}
 In the case where $T_1 = 20, T_2 = 29, T_3 = 35$ ms and $C_i = 10$ ms,
 $i=\{1,2,3\}$, $U=1.131 > 1$. Hence tasks $J_1, J_2, J_3$ are not schedulable
-in any scheduling scheme.
+under any scheduling scheme.
 
 
-\begin{figure}[H]\centering
-  \scalebox{0.7}{\input{./figures/5/gantt.tex}}
-  \caption{A portion of the RM schedule $\sigma$ for tasks $J_1, J_2, J_3$ for
-    $C_i = 10$ ms.  Shaded areas denote the waiting time. Notice that $J_3$
-    misses its deadlines consecutively, indicative of the inability of
-    schedulability.}
-\end{figure}
+%\begin{figure}[H]\centering
+  %\scalebox{0.7}{\input{./figures/5/gantt.tex}}
+  %\caption{A portion of the EDF schedule $\sigma$ for tasks $J_1, J_2, J_3$ for
+    %$C_i = 10$ ms.  Shaded areas denote the waiting time. Notice that $J_3$
+    %misses its deadlines consecutively, indicative of the inability of
+    %schedulability.}
+%\end{figure}
 
-All penduli are still stable. However, due to the increased execution time, the
-control input is not as swift as before, hence the increased magnitude of the
-overshoot and the larger rise and settling times.
-Figure \ref{fig:5.2} shows the angular displacement of each pendulum as a
-function of time.
-Figures \ref{fig:5.6_10.1}, \ref{fig:5.6_10.2} and \ref{fig:5.6_10.3} show
-the angular displacement of penduli $P_1$, $P_2$ and $P_3$ respectively, as a
-function of time, for the two different cases of execution time.
+Here we note that the lack of feasibility of a schedule is connected to the
+notion and fact of deadlines not being met. This, however, does not mean that
+there can be no control over a system. All penduli are stable as opposed to the
+case of RM scheduling with the same execution time. This is because all control
+tasks can be preemped, hence every one of them is allowed execution in the
+processor, which results to all of them being executed. Hence, despite the fact
+that deadlines are missed, it is possible to control all three penduli, although
+it may be with worse control performance than in the case where $C_i = 6$ ms.
 
-\begin{figure}[H]\centering
-  \scalebox{1}{\input{./figures/5/5.2.tex}}
-  \caption{The angular displacement of each pendulum as a function of time.
-    \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$, \texttt{Orange}: $P_3$.
-    $C_i = 10$ ms.}
-  \label{fig:5.2}
-\end{figure}
+Due to the missing of deadlines, and, ultimately, due to the increased execution
+time, the control input is not as swift as before, hence the increased magnitude
+of the overshoot and the larger rise and settling times. Figure \ref{fig:02.5.2}
+shows the angular displacement of each pendulum as a function of time.
+Figures \ref{fig:02.5.6_10.1}, \ref{fig:02.5.6_10.2} and \ref{fig:02.5.6_10.3}
+show the angular displacement of penduli $P_1$, $P_2$ and $P_3$ respectively, as
+a function of time, for the two different cases of execution time.
 
-\begin{figure}[H]\centering
-  \scalebox{1}{\input{./figures/5/5.6_10.1.tex}}
-  \caption{The angular displacement of pendulum $P_1$ as a function of time.
-    \texttt{Blue}: $C_1 = 6$ ms, \texttt{Red}: $C_1 = 10$ ms}
-  \label{fig:5.6_10.1}
-\end{figure}
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]\centering
+      \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/5/5.2.tex}}
+      \caption{The angular displacement of each pendulum as a function of time.
+        \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$, \texttt{Orange}: $P_3$.
+        $C_i = 10$ ms.}
+      \label{fig:02.5.2}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]\centering
+      \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/5/5.6_10.1.tex}}
+      \caption{The angular displacement of pendulum $P_1$ as a function of time.
+        \texttt{Blue}: $C_1 = 6$ ms, \texttt{Red}: $C_1 = 10$ ms}
+      \label{fig:02.5.6_10.1}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
 
-\begin{figure}[H]\centering
-  \scalebox{1}{\input{./figures/5/5.6_10.2.tex}}
-  \caption{The angular displacement of pendulum $P_2$ as a function of time.
-    \texttt{Blue}: $C_2 = 6$ ms, \texttt{Red}: $C_2 = 10$ ms}
-  \label{fig:5.6_10.2}
-\end{figure}
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]\centering
+      \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/5/5.6_10.2.tex}}
+      \caption{The angular displacement of pendulum $P_2$ as a function of time.
+        \texttt{Blue}: $C_2 = 6$ ms, \texttt{Red}: $C_2 = 10$ ms}
+      \label{fig:02.5.6_10.2}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]\centering
+      \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/5/5.6_10.3.tex}}
+      \caption{The angular displacement of pendulum $P_3$ as a function of time.
+        \texttt{Blue}: $C_3 = 6$ ms, \texttt{Red}: $C_3 = 10$ ms}
+      \label{fig:02.5.6_10.3}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}\\
 
-\begin{figure}[H]\centering
-  \scalebox{1}{\input{./figures/5/5.6_10.3.tex}}
-  \caption{The angular displacement of pendulum $P_3$ as a function of time.
-    \texttt{Blue}: $C_3 = 6$ ms, \texttt{Red}: $C_3 = 10$ ms}
-  \label{fig:5.6_10.3}
-\end{figure}
 
-Figure \ref{fig:5.3} shows the schedule calculated for each pendulum with all
-jobs having execution time $C_i = 10$ ms.  Figure \ref{fig:5.4} illustrates that
-the schedule is not feasible by ploting the overall usage of the CPU over the
-length of a schedule period, which is at all times $100\%$, indicative of the
-excessive processing load demanded.
+Figure \ref{fig:02.5.3} shows the schedule calculated for each pendulum with all
+tasks having execution time $C_i = 10$ ms. Figure \ref{fig:02.5.4} illustrates
+that the schedule is not feasible by ploting the overall usage of the CPU over
+the length of a schedule period, which is at all times $100\%$, indicative of
+the excessive processing load demanded.
 
 
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]\centering
-      \scalebox{0.7}{\input{./figures/5/5.3.tex}}
+      \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/5/5.3.tex}}
       \caption{The calculated schedule for the three penduli.
         \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$, \texttt{Orange}: $P_3$.
         $C_i = 10$ ms.}
-      \label{fig:5.3}
+      \label{fig:02.5.3}
     \end{figure}
   \end{minipage}
   \hfill
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]\centering
-    \scalebox{0.7}{\input{./figures/5/5.4.tex}}
+    \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/5/5.4.tex}}
     \caption{The overall processing usage. Notice that it always at $100\%$.
       $C_i = 10$ ms.}
-      \label{fig:5.4}
+      \label{fig:02.5.4}
   \end{figure}
 \end{minipage}
 \end{minipage}

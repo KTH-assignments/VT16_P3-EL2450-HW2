@@ -4,8 +4,8 @@ global executionTime
 %executionTime = 0.010; %executiontime for the controller
 executionTime = 0.006; %executiontime for the controller
 
-schedulingPolicy = 'prioDM'; %the scheduling policy used in the simulation
-%schedulingPolicy = 'prioEDF'; %the scheduling policy used in the simulation
+%schedulingPolicy = 'prioDM'; %the scheduling policy used in the simulation
+schedulingPolicy = 'prioEDF'; %the scheduling policy used in the simulation
 
 ttInitKernel(schedulingPolicy);
 

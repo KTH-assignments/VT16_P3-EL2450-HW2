@@ -1,8 +1,8 @@
 \subsubsection{Question 4}
 
-Figure \ref{fig:4.1} shows the schedule calculated for each pendulum over a
+Figure \ref{fig:02.4.1} shows the schedule calculated for each pendulum over a
 timespan of $lcm(20,29,35) = 4060$ ms: exactly one period of the schedule.
-As per the response to question 2, figure \ref{fig:4.2} illustrates that the
+As per the response to question 2, figure \ref{fig:02.4.2} illustrates that the
 schedule is indeed feasible by plotting the overall usage of the CPU over the
 aforementioned timespan.
 
@@ -11,20 +11,20 @@ aforementioned timespan.
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]\centering
-      \scalebox{0.7}{\input{./figures/4/4.1.tex}}
+      \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/4/4.1.tex}}
       \caption{The calculated schedule for the three penduli.
        \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$, \texttt{Orange}: $P_3$.
        $C_i = 6$ ms.}
-      \label{fig:4.1}
+      \label{fig:02.4.1}
     \end{figure}
   \end{minipage}
   \hfill
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]\centering
-    \scalebox{0.7}{\input{./figures/4/4.2.tex}}
+    \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/4/4.2.tex}}
     \caption{The overall processing usage. Notice that it is at most at $100\%$.
        $C_i = 6$ ms.}
-      \label{fig:4.2}
+      \label{fig:02.4.2}
   \end{figure}
 \end{minipage}
 \end{minipage}
