@@ -1,0 +1,20 @@
+\begin{ganttchart}[vgrid, hgrid]{0}{47}
+%\gantttitle{2016}{12}\\
+\gantttitlelist{6,12,...,48}{6}\\
+\ganttset{progress label text={},
+       bar incomplete/.append style={fill=black!40},
+       group/.append style={draw=black, fill=black},}
+\ganttbar{Task 1}{0}{5}
+\ganttbar{}{20}{25}
+\ganttbar{}{40}{45}\\
+
+\ganttbar[progress=00]{Task 2}{0}{5}
+\ganttbar{}{6}{11}
+\ganttbar{}{29}{34}\\
+
+\ganttbar[progress=00]{Task 3}{0}{17}
+\ganttbar{}{12}{17}
+\ganttbar{}{35}{39}
+\ganttbar[progress=00]{}{40}{45}
+\ganttbar{}{46}{46}
+\end{ganttchart}
