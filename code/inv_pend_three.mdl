@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.184"
+    ComputedModelVersion    "1.187"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -39,7 +39,7 @@ Model {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[9]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -66,9 +66,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "li9i"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Feb 14 03:41:01 2016"
-  RTWModifiedTimeStamp	  377322048
-  ModelVersionFormat	  "1.%<AutoIncrement:184>"
+  LastModifiedDate	  "Sun Feb 14 05:32:51 2016"
+  RTWModifiedTimeStamp	  377328764
+  ModelVersionFormat	  "1.%<AutoIncrement:187>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -183,7 +183,7 @@ Model {
 	  $ObjectID		  8
 	  Version		  "1.14.3"
 	  StartTime		  "0.0"
-	  StopTime		  "1"
+	  StopTime		  "4.060"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -846,7 +846,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "23"
+    SIDHighWatermark	    "24"
     Block {
       BlockType		      Scope
       Name		      "Control Signal"
@@ -1031,6 +1031,20 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace1"
+      SID		      "24"
+      Ports		      [1]
+      Position		      [400, 415, 460, 445]
+      ZOrder		      2
+      VariableName	      "sched"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Reference
       Name		      "TrueTime Kernel"
       SID		      "13"
@@ -1198,9 +1212,18 @@ Model {
       }
       Branch {
 	ZOrder			25
-	Points			[0, 145]
-	DstBlock		"Save schedule"
-	DstPort			1
+	Points			[0, 145; 58, 0]
+	Branch {
+	  ZOrder		  37
+	  Points		  [0, 90]
+	  DstBlock		  "To Workspace1"
+	  DstPort		  1
+	}
+	Branch {
+	  ZOrder		  36
+	  DstBlock		  "Save schedule"
+	  DstPort		  1
+	}
       }
     }
   }

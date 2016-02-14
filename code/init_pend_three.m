@@ -7,7 +7,7 @@ schedulingPolicy = 'prioEDF'; %the scheduling policy used in the simulation
 ttInitKernel(schedulingPolicy);
 
 T = [0.02 0.029 0.035]; % Task periods
-names= {'pid_task1', 'pid_task2', 'pid_task3'};
+names= ['pid_task1', 'pid_task2', 'pid_task3'];
 
 wVec = [9.9 7 5.7];
 % Create three tasks
@@ -27,7 +27,7 @@ for i = 1:3
     data.theta_Chan = i;
     data.uChan = i;
     data.late=0;
-    ttCreatePeriodicTask(names{i}, 0.0,T(i), 'pend_reg_three_code', data);
+    ttCreatePeriodicTask(names(i), 0.0, T(i), 'pend_reg_three_code', data);
 end
 
 
