@@ -9,6 +9,19 @@ considered scheduling policies. Figures \ref{fig:02.6.6.1_diff},
 in angular displacement between the two considered scheduling policies for the
 two considered execution times for all stable penduli.
 
+With execution time $C_i = 6$ ms the behaviour of all three penduli is nearly
+identical with respect to the two different scheduling policies. Scheduling
+under EDF makes the system have a higher overshoot but its peak difference from
+that of RM's is by an order of magnitude of $10^{-3}$ degrees. Hence their
+difference is negligible.
+
+With execution time $C_i = 10$ ms there are two things to consider. First that
+pendulum $P_3$ is not controllable under RM but it is under EDF. Hence, if the
+purpose at hand is to control all three penduli, EDF is conclusively the only
+choice there is. On the other hand, though, EDF makes the system behave
+oscillatory in a degree larger than RM, with higher overshoot, rise and settling
+times.
+
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
