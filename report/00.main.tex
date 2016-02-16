@@ -12,6 +12,7 @@
 \usepackage{polyglossia}
 \usepackage{babel}
 \usepackage{pgfgantt}
+\usepackage{rotating}
 \setmainlanguage{english}
 
 \widowpenalty=1000
@@ -37,6 +38,8 @@
 	\maketitle
 
   \section{Part One: Scheduling}
+    Throughout this part, the pendulum with length $l_1 = 0.1$ m will be
+    referred to as $P_1$, $l_2 = 0.2$ m as $P_2$ and $l_3 = 0.3$ m as $P_3$.
   \subsection{Rate Monotonic scheduling}
   \input{./sections/01.rate_monotonic_scheduling/01.tex}
   \input{./sections/01.rate_monotonic_scheduling/02.tex}
@@ -53,9 +56,13 @@
   \input{./sections/02.earliest_deadline_first/06.tex}
   \newpage
 
+  \section{Part Two: Networked Control Systems}
+  \newpage
 
-  % Bibliography
-  %\bibliographystyle{plain}
-  %\newpage
-  %\bibliography{./sections/bibliography.bib}
+  \section{Part Three: Discrete Event System}
+  \newpage
+
+  \appendix
+  \input{./sections/05.appendix/00.tex}
+
 \end{document}
