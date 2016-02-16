@@ -1,0 +1,25 @@
+\subsection{Question 1}
+
+From the continuous plant
+
+\begin{align*}
+  \dot{x}(t) &= Ax(t) + Bu(t) \\
+        y(t) &= Cx(t)
+\end{align*}
+
+and the fact that $A=0$ we can derive the equation for the discretized state,
+where $t \in [kh, kh + h)$:
+
+\begin{align*}
+  x(t) &= e^{A(t-kh)} x(kh) + \int_{kh}^t e^{A(t-s)} B u(s)ds \\
+      ~&= x(kh) + \int_{kh}^t B (-Kx(kh))ds \\
+      ~&= x(kh) - (t-kh) B K x(kh) \\
+      ~&= (I - (t-kh)BK) x(kh)
+\end{align*}
+
+and
+
+\begin{equation}
+  y(t) = C x(t) = C \big(I - (t-kh)BK\big) x(kh)
+  \label{eq:03.1}
+\end{equation}

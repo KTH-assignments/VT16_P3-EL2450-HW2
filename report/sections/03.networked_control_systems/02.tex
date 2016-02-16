@@ -1,0 +1,62 @@
+\subsection{Question 2}
+
+In order for the system to be stable the eigenvalues of $(I - (t-kh)BK)$ should
+lie inside the unit circle. Assuming $K = [K_1\ K_2]$:
+
+\begin{align*}
+  I - (t-kh)BK &=
+  \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix}
+  - (t-kh)
+  \begin{bmatrix}
+    1 \\
+    1
+  \end{bmatrix}
+  \begin{bmatrix}
+    K_1 & K_2
+  \end{bmatrix}
+  \\
+  ~&=
+  \begin{bmatrix}
+    1 - K_1 (t-kh) & -K_2 (t-kh) \\
+    -K_1 (t-kh)    & 1 - K_2 (t-kh)
+  \end{bmatrix}
+\end{align*}
+
+The characteristic polynomial of this matrix is
+
+\begin{align*}
+  |\lambda I - (I - (t-kh)BK)| &= (\lambda-1)^2 + (\lambda-1)(K_1 + K_2)(t-kh) \\
+                               &= \lambda^2 + \lambda\big((t-kh)(K_1 + K_2)-2\big) + 1 - (K_1 + K_2)(t-kh)
+\end{align*}
+
+By Jury's criterion the system is stable if the following inequalities hold:
+
+\begin{align*}
+  \left.\begin{aligned}
+    1 - (K_1 + K_2)(t-kh)   &< 1 \\
+    1 - (t-kh)((K_1 + K_2)) &> (t-kh)(K_1 + K_2) -2 -1 \\
+    1 - (t-kh)((K_1 + K_2)) &> -(t-kh)(K_1 + K_2) +2 -1
+  \end{aligned}\ \right\}
+\end{align*}
+
+For $t = kh + \tau$
+
+\begin{align*}
+  \left.\begin{aligned}
+    (K_1 + K_2) \tau &> 0 \\
+    2 (K_1 + K_2) \tau &< 4
+  \end{aligned}\ \right\}
+\end{align*}
+
+or $$0 < (K_1 + K_2) \tau < 2$$
+
+which means that
+$$0 < h K B \dfrac{\tau}{h} < 2$$
+
+\begin{equation}
+  0 < \dfrac{\tau}{h} < 2(hKB)^{-1}
+  \label{eq:03.2}
+\end{equation}
