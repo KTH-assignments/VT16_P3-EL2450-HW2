@@ -1,0 +1,40 @@
+\section{Question 2}
+
+The set of states of the discrete event system that models the complete
+manufacturing process $Q$ will be a subset of the set of states comprised by
+the combination of all states of the DES of machines $M_1$, $M_2$ and buffer $M$:
+
+$$Q \subseteq Q_{M_1} \times Q_{M_2} \times Q_{B}$$
+
+Table \ref{tbl:04.02_all_states} features the complete set of states that result
+from the combination of states of $M_1$, $M_2$ and $B$. Here we can see that
+some states do not have a meaning in the process, for example state $(I,I,F)$,
+where both machines are idle but the buffer is full does not correspond to
+real-life conditions.
+
+\begin{table}[H]\centering
+    \begin{tabular}{r|lll}
+    state notation of \\ the complete DES & M1         & M2         & B     \\ \hline
+    (I,I,E)                            & Idle       & Idle       & Empty \\
+    (I,I,F)                            & Idle       & Idle       & Full  \\
+    (I,P,E)                            & Idle       & Processing & Empty \\
+    (I,P,F)                            & Idle       & Processing & Full  \\
+    (I,D,E)                            & Idle       & Down       & Empty \\
+    (I,D,F)                            & Idle       & Down       & Full  \\
+    (P,I,E)                            & Processing & Idle       & Empty \\
+    (P,I,F)                            & Processing & Idle       & Full  \\
+    (P,P,E)                            & Processing & Processing & Empty \\
+    (P,P,F)                            & Processing & Processing & Full  \\
+    (P,D,E)                            & Processing & Down       & Empty \\
+    (P,D,F)                            & Processing & Down       & Full  \\
+    (D,I,E)                            & Down       & Idle       & Empty \\
+    (D,I,F)                            & Down       & Idle       & Full  \\
+    (D,P,E)                            & Down       & Processing & Empty \\
+    (D,P,F)                            & Down       & Processing & Full  \\
+    (D,D,E)                            & Down       & Down       & Empty \\
+    (D,D,F)                            & Down       & Down       & Full  \\
+    \end{tabular}
+    \caption{The complete set of all state combinations between machines $M_1$
+      and $M_2$ and buffer $B$.}
+    \label{tbl:04.02_all_states}
+\end{table}

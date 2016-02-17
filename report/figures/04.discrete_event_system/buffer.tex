@@ -1,0 +1,9 @@
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=4.8cm,
+                    semithick]
+
+  \node[initial,state,accepting] (A)          {Empty};
+  \node[state]         (B) [right of=A]       {Full};
+
+  \path (A) edge [bend left] node {\texttt{PLACED}} (B)
+        (B) edge [bend left] node {\texttt{TAKEN}} (A);
+\end{tikzpicture}
