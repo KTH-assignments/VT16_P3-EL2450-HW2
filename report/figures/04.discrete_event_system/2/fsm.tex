@@ -1,0 +1,89 @@
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.8cm,
+                    semithick]
+
+  \node[initial,state,accepting] (01)           {(I,I,E)};
+  \node[state]         (02) [right of=01]       {(I,I,F)};
+  \node[state]         (03) [right of=02]       {(I,P,E)};
+  \node[state]         (04) [right of=03]       {(I,P,F)};
+  \node[state]         (05) [right of=04]       {(I,D,E)};
+  \node[state]         (06) [right of=05]       {(I,D,F)};
+  \node[state]         (07) [right of=06]       {(P,I,E)};
+  \node[state]         (08) [right of=07]       {(P,I,F)};
+  \node[state]         (09) [right of=08]       {(P,P,E)};
+  \node[state]         (10) [right of=09]       {(P,P,F)};
+  \node[state]         (11) [right of=10]       {(P,D,E)};
+  \node[state]         (12) [right of=11]       {(P,D,F)};
+  \node[state]         (13) [right of=12]       {(D,I,E)};
+  \node[state]         (14) [right of=13]       {(D,I,F)};
+  \node[state]         (15) [right of=14]       {(D,P,E)};
+  \node[state]         (16) [right of=15]       {(D,P,F)};
+  \node[state]         (17) [right of=16]       {(D,D,E)};
+  \node[state]         (18) [right of=17]       {(D,D,F)};
+
+  \path (01) edge [bend left] node {\texttt{PLACED}}        (02)
+        (01) edge [bend left] node {\texttt{START(2)}}      (03)
+        (01) edge [bend left] node {\texttt{START(1)}}      (07);
+  \path (02) edge [bend left] node {\texttt{TAKEN}}         (01)
+        (02) edge [bend left] node {\texttt{START(2)}}      (03)
+        (02) edge [bend left] node {\texttt{START(1)}}      (07);
+  \path (03) edge [bend left] node {\texttt{END(2)}}        (01)
+        (03) edge [bend left] node {\texttt{PLACED}}        (04)
+        (03) edge [bend left] node {\texttt{BREAKDOWN(2)}}  (05)
+        (03) edge [bend left] node {\texttt{START(1)}}      (09);
+  \path (04) edge [bend left] node {\texttt{END(2)}}        (02)
+        (04) edge [bend left] node {\texttt{TAKEN}}         (03)
+        (04) edge [bend left] node {\texttt{BREAKDOWN(2)}}  (06)
+        (04) edge [bend left] node {\texttt{START(1)}}      (10);
+  \path (05) edge [bend left] node {\texttt{REPAIR(1)}}     (01)
+        (05) edge [bend left] node {\texttt{PLACED}}        (06)
+        (05) edge [bend left] node {\texttt{START(1)}}      (11);
+  \path (06) edge [bend left] node {\texttt{REPAIR(2)}}     (02)
+        (06) edge [bend left] node {\texttt{TAKEN}}         (05)
+        (06) edge [bend left] node {\texttt{START(1)}}      (12);
+  \path (07) edge [bend left] node {\texttt{END(1)}}        (01)
+        (07) edge [bend left] node {\texttt{PLACED}}        (08)
+        (07) edge [bend left] node {\texttt{START(2)}}      (09)
+        (07) edge [bend left] node {\texttt{BREAKDOWN(1)}}  (13);
+  \path (08) edge [bend left] node {\texttt{END(1)}}        (02)
+        (08) edge [bend left] node {\texttt{TAKEN}}         (07)
+        (08) edge [bend left] node {\texttt{END(2)}}        (10)
+        (08) edge [bend left] node {\texttt{BREAKDOWN(1)}}  (14);
+  \path (09) edge [bend left] node {\texttt{END(1)}}        (03)
+        (09) edge [bend left] node {\texttt{END(2)}}        (07)
+        (09) edge [bend left] node {\texttt{PLACED}}        (10)
+        (09) edge [bend left] node {\texttt{BREAKDOWN(2)}}  (11)
+        (09) edge [bend left] node {\texttt{BREAKDOWN(1)}}  (15);
+  \path (10) edge [bend left] node {\texttt{END(1)}}        (03)
+        (10) edge [bend left] node {\texttt{END(2)}}        (08)
+        (10) edge [bend left] node {\texttt{TAKEN}}         (09)
+        (10) edge [bend left] node {\texttt{BREAKDOWN(2)}}  (12)
+        (10) edge [bend left] node {\texttt{BREAKDOWN(1)}}  (16);
+  \path (11) edge [bend left] node {\texttt{END(1)}}        (05)
+        (11) edge [bend left] node {\texttt{REPAIR(2)}}     (07)
+        (11) edge [bend left] node {\texttt{PLACED}}        (12)
+        (11) edge [bend left] node {\texttt{BREAKDOWN(1)}}  (17);
+  \path (12) edge [bend left] node {\texttt{END(1)}}        (06)
+        (12) edge [bend left] node {\texttt{REPAIR(2)}}     (08)
+        (12) edge [bend left] node {\texttt{TAKEN}}         (11)
+        (12) edge [bend left] node {\texttt{BREAKDOWN(1)}}  (18);
+  \path (13) edge [bend left] node {\texttt{REPAIR(1)}}     (01)
+        (13) edge [bend left] node {\texttt{PLACED}}        (14)
+        (13) edge [bend left] node {\texttt{START(2)}}      (16);
+  \path (14) edge [bend left] node {\texttt{REPAIR(1)}}     (02)
+        (14) edge [bend left] node {\texttt{TAKEN}}         (13)
+        (14) edge [bend left] node {\texttt{START(2)}}      (16);
+  \path (15) edge [bend left] node {\texttt{REPAIR(1)}}     (03)
+        (15) edge [bend left] node {\texttt{END(2)}}        (13)
+        (15) edge [bend left] node {\texttt{PLACED}}        (16)
+        (15) edge [bend left] node {\texttt{BREAKDOWN(2)}}  (17);
+  \path (16) edge [bend left] node {\texttt{REPAIR(1)}}     (04)
+        (16) edge [bend left] node {\texttt{END(2)}}        (14)
+        (16) edge [bend left] node {\texttt{TAKEN}}         (15)
+        (16) edge [bend left] node {\texttt{BREAKDOWN(2)}}  (18);
+  \path (17) edge [bend left] node {\texttt{REPAIR(1)}}     (05)
+        (17) edge [bend left] node {\texttt{REPAIR(2)}}     (13)
+        (17) edge [bend left] node {\texttt{PLACED}}        (18);
+  \path (18) edge [bend left] node {\texttt{REPAIR(1)}}     (06)
+        (18) edge [bend left] node {\texttt{REPAIR(2)}}     (14)
+        (18) edge [bend left] node {\texttt{TAKEN}}         (17);
+\end{tikzpicture}
