@@ -23,30 +23,30 @@
   \path (01) edge [bend left] node {\texttt{PLACED}}        (02)
         (01) edge [bend left] node {\texttt{START(2)}}      (03)
         (01) edge [bend left] node {\texttt{START(1)}}      (07);
-  \path (02) edge [bend left] node {\texttt{TAKEN}}         (01)
-        (02) edge [bend left] node {\texttt{START(2)}}      (04)
-        (02) edge [bend left] node {\texttt{START(1)}}      (08);
+  \path (02) edge [bend left] node {\texttt{TAKEN}}         (01);
+        %(02) edge [bend left] node {\texttt{START(2)}}      (04)
+        %(02) edge [bend left] node {\texttt{START(1)}}      (08);
   \path (03) edge [bend left] node {\texttt{END(2)}}        (01)
         (03) edge [bend left] node {\texttt{PLACED}}        (04)
         (03) edge [bend left] node {\texttt{BREAKDOWN(2)}}  (05)
         (03) edge [bend left] node {\texttt{START(1)}}      (09);
   \path (04) edge [bend left] node {\texttt{END(2)}}        (02)
         (04) edge [bend left] node {\texttt{TAKEN}}         (03)
-        (04) edge [bend left] node {\texttt{BREAKDOWN(2)}}  (06)
-        (04) edge [bend left] node {\texttt{START(1)}}      (10);
+        (04) edge [bend left] node {\texttt{BREAKDOWN(2)}}  (06);
+        %(04) edge [bend left] node {\texttt{START(1)}}      (10);
   \path (05) edge [bend left] node {\texttt{REPAIR(1)}}     (01)
-        (05) edge [bend left] node {\texttt{PLACED}}        (06)
-        (05) edge [bend left] node {\texttt{START(1)}}      (11);
+        (05) edge [bend left] node {\texttt{PLACED}}        (06);
+        %(05) edge [bend left] node {\texttt{START(1)}}      (11);
   \path (06) edge [bend right] node {\texttt{REPAIR(2)}}     (02)
-        (06) edge [bend left] node {\texttt{TAKEN}}         (05)
-        (06) edge [bend left] node {\texttt{START(1)}}      (12);
+        (06) edge [bend left] node {\texttt{TAKEN}}         (05);
+        %(06) edge [bend left] node {\texttt{START(1)}}      (12);
   \path (07) edge [bend left] node {\texttt{END(1)}}        (01)
         (07) edge [bend left] node {\texttt{PLACED}}        (08)
         (07) edge [bend left] node {\texttt{START(2)}}      (09)
         (07) edge [bend left] node {\texttt{BREAKDOWN(1)}}  (13);
   \path (08) edge [bend left] node {\texttt{END(1)}}        (02)
         (08) edge [bend left] node {\texttt{TAKEN}}         (07)
-        (08) edge [bend left] node {\texttt{START(2)}}        (10)
+        %(08) edge [bend left] node {\texttt{START(2)}}        (10)
         (08) edge [bend left] node {\texttt{BREAKDOWN(1)}}  (14);
   \path (09) edge [bend left] node {\texttt{END(1)}}        (03)
         (09) edge [bend left] node {\texttt{END(2)}}        (07)
@@ -70,8 +70,8 @@
         (13) edge [bend left] node {\texttt{PLACED}}        (14)
         (13) edge [bend left] node {\texttt{START(2)}}      (15);
   \path (14) edge [bend left] node {\texttt{REPAIR(1)}}     (02)
-        (14) edge [bend left] node {\texttt{TAKEN}}         (13)
-        (14) edge [bend left] node {\texttt{START(2)}}      (16);
+        (14) edge [bend left] node {\texttt{TAKEN}}         (13);
+        %(14) edge [bend left] node {\texttt{START(2)}}      (16);
   \path (15) edge [bend left] node {\texttt{REPAIR(1)}}     (03)
         (15) edge [bend left] node {\texttt{END(2)}}        (13)
         (15) edge [bend left] node {\texttt{PLACED}}        (16)
@@ -80,10 +80,10 @@
         (16) edge [bend left] node {\texttt{END(2)}}        (14)
         (16) edge [bend left] node {\texttt{TAKEN}}         (15)
         (16) edge [bend left] node {\texttt{BREAKDOWN(2)}}  (18);
-  \path (17) edge [bend left] node {\texttt{REPAIR(1)}}     (05)
+  \path %(17) edge [bend left] node {\texttt{REPAIR(1)}}     (05)
         (17) edge [bend left] node {\texttt{REPAIR(2)}}     (13)
         (17) edge [bend left] node {\texttt{PLACED}}        (18);
-  \path (18) edge [bend left] node {\texttt{REPAIR(1)}}     (06)
+  \path %(18) edge [bend left] node {\texttt{REPAIR(1)}}     (06)
         (18) edge [bend left] node {\texttt{REPAIR(2)}}     (14)
         (18) edge [bend left] node {\texttt{TAKEN}}         (17);
 \end{tikzpicture}

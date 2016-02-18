@@ -1,17 +1,13 @@
 \section{Question 2}
 
 The set of states of the discrete event system that models the complete
-manufacturing process $Q$ will be a subset of the set of states comprised by
-the combination of all states of the DES of machines $M_1$, $M_2$ and buffer $M$:
+manufacturing process $Q$ is the set of combination of all states of the DES of
+machines $M_1$, $M_2$ and buffer $B$:
 
-$$Q \subseteq Q_{M_1} \times Q_{M_2} \times Q_{B}$$
+$$Q \equiv Q_{M_1} \times Q_{M_2} \times Q_{B}$$
 
-Table \ref{tbl:04.02_all_states} features the complete set of states that result
-from the combination of states of $M_1$, $M_2$ and $B$.
-%Here we can see that
-%some states do not have a meaning in the process. For example state $(I,I,F)$,
-%where both machines are idle but the buffer is full, does not correspond to
-%real-life conditions.
+State set $Q$ is defined in table \ref{tbl:04.02_all_states}.
+
 
 \begin{table}[H]\centering
     \begin{tabular}{r|lll}
@@ -57,71 +53,64 @@ The initial state $q_0$ shall be state $q_0 = (I,I,E)$, that is, both $M_1$ and
 $M_2$ are idle, and buffer $B$ is empty. Furthermore, the marked state shall be
 the initial state $Q_m \equiv \{q_0\}$.
 
-The transition function $\delta()$ is shown in tables \ref{tbl:04.02_delta_1}
-and \ref{tbl:04.02_delta_2}.
+Since there are $18$ states, the maximum number of transitions between them is
+$18^2$. However, it is assumed that transitions between states are caused by
+single events $e \in E$ ($E$ is defined below), i.e. two events cannot happen
+at the same time. This fact decreases the number of allowed transitions from
+$18^2$ to $66$.
+
+The transition function $\delta()$ is shown in table \ref{tbl:04.02_delta}.
+The state machine diagram is illustrated in figure \ref{fig:fsm_2}. From this
+and the size of the number of transitions we can discern that synthesis of
+separate processes into one, even simple ones like these in this exercise, can
+lead to a DES whose complexity is higher than that of the separate DES.
 
 \begin{table}[H]\centering
-  \begin{tabular}{l|l}
-    $\delta$((I,I,E), $\texttt{PLACED})$ = (I,I,F)       & $\delta$((P,I,E), $\texttt{START(2)})$ = (P,P,E)     \\
-    $\delta$((I,I,E), $\texttt{START(2)})$ = (I,P,E)     & $\delta$((P,I,E), $\texttt{BREAKDOWN(1)})$ = (D,I,E) \\
-    $\delta$((I,I,E), $\texttt{START(1)})$ = (P,I,E)     & $\delta$((P,I,F), $\texttt{END(1)})$ = (I,I,F)       \\
-    $\delta$((I,I,F), $\texttt{TAKEN})$ = (I,I,E)        & $\delta$((P,I,F), $\texttt{TAKEN})$ = (P,I,E)        \\
-    $\delta$((I,I,F), $\texttt{START(2)})$ = (I,P,F)     & $\delta$((P,I,F), $\texttt{END(2)})$ = (P,P,F)       \\
-    $\delta$((I,I,F), $\texttt{START(1)})$ = (P,I,F)     & $\delta$((P,I,F), $\texttt{BREAKDOWN(1)})$ = (D,I,F) \\
-    $\delta$((I,P,E), $\texttt{END(2)})$ = (I,I,E)       & $\delta$((P,P,E), $\texttt{END(1)})$ = (I,P,E)       \\
-    $\delta$((I,P,E), $\texttt{PLACED})$ = (I,P,F)       & $\delta$((P,P,E), $\texttt{END(2)})$ = (P,I,E)       \\
-    $\delta$((I,P,E), $\texttt{BREAKDOWN(2)})$ = (I,D,E) & $\delta$((P,P,E), $\texttt{PLACED})$ = (P,P,F)       \\
-    $\delta$((I,P,E), $\texttt{START(1)})$ = (P,P,E)     & $\delta$((P,P,E), $\texttt{BREAKDOWN(2)})$ = (P,D,E) \\
-    $\delta$((I,P,F), $\texttt{END(2)})$ = (I,I,F)       & $\delta$((P,P,E), $\texttt{BREAKDOWN(1)})$ = (D,P,E) \\
-    $\delta$((I,P,F), $\texttt{TAKEN})$ = (I,P,E)        & $\delta$((P,P,F), $\texttt{END(1)})$ = (I,P,F)       \\
-    $\delta$((I,P,F), $\texttt{BREAKDOWN(2)})$ = (I,D,F) & $\delta$((P,P,F), $\texttt{END(2)})$ = (P,I,F)       \\
-    $\delta$((I,P,F), $\texttt{START(1)})$ = (P,P,F)     & $\delta$((P,P,F), $\texttt{TAKEN})$ = (P,P,E)        \\
-    $\delta$((I,D,E), $\texttt{REPAIR(1)})$ = (I,I,E)    & $\delta$((P,P,F), $\texttt{BREAKDOWN(2)})$ = (P,D,F) \\
-    $\delta$((I,D,E), $\texttt{PLACED})$ = (I,D,F)       & $\delta$((P,P,F), $\texttt{BREAKDOWN(1)})$ = (D,P,F) \\
-    $\delta$((I,D,E), $\texttt{START(1)})$ = (P,D,E)     & $\delta$((P,D,E), $\texttt{END(1)})$ = (I,D,E)       \\
-    $\delta$((I,D,F), $\texttt{REPAIR(2)})$ = (I,I,F)    & $\delta$((P,D,E), $\texttt{REPAIR(2)})$ = (P,I,E)    \\
-    $\delta$((I,D,F), $\texttt{TAKEN})$ = (I,D,E)        & $\delta$((P,D,E), $\texttt{PLACED})$ = (P,D,F)       \\
-    $\delta$((I,D,F), $\texttt{START(1)})$ = (P,D,F)     & $\delta$((P,D,E), $\texttt{BREAKDOWN(1)})$ = (D,D,E) \\
-    $\delta$((P,I,E), $\texttt{END(1)})$ = (I,I,E)       & $\delta$((P,D,F), $\texttt{END(1)})$ = (I,D,F)       \\
-    $\delta$((P,I,E), $\texttt{PLACED})$ = (P,I,F)       & $\delta$((P,D,F), $\texttt{REPAIR(2)})$ = (P,I,F)    \\
-  \end{tabular}
-  \caption{Allowed transitions between states (part I).}
-  \label{tbl:04.02_delta_1}
-\end{table}
+  \begin{tabular}{ll}
+    $\delta$((I,I,E), $\texttt{PLACED})$ = (I,I,F)       & $\delta$((P,P,F), $\texttt{END(1)})$ = (I,P,F)       \\
+    $\delta$((I,I,E), $\texttt{START(2)})$ = (I,P,E)     & $\delta$((P,P,F), $\texttt{END(2)})$ = (P,I,F)       \\
+    $\delta$((I,I,E), $\texttt{START(1)})$ = (P,I,E)     & $\delta$((P,P,F), $\texttt{TAKEN})$ = (P,P,E)        \\
+    $\delta$((I,I,F), $\texttt{TAKEN})$ = (I,I,E)        & $\delta$((P,P,F), $\texttt{BREAKDOWN(2)})$ = (P,D,F) \\
+    $\delta$((I,I,F), $\texttt{START(2)})$ = (I,P,F)     & $\delta$((P,P,F), $\texttt{BREAKDOWN(1)})$ = (D,P,F) \\
+    $\delta$((I,I,F), $\texttt{START(1)})$ = (P,I,F)     & $\delta$((P,D,E), $\texttt{END(1)})$ = (I,D,E)       \\
+    $\delta$((I,P,E), $\texttt{END(2)})$ = (I,I,E)       & $\delta$((P,D,E), $\texttt{REPAIR(2)})$ = (P,I,E)    \\
+    $\delta$((I,P,E), $\texttt{PLACED})$ = (I,P,F)       & $\delta$((P,D,E), $\texttt{PLACED})$ = (P,D,F)       \\
+    $\delta$((I,P,E), $\texttt{BREAKDOWN(2)})$ = (I,D,E) & $\delta$((P,D,E), $\texttt{BREAKDOWN(1)})$ = (D,D,E) \\
+    $\delta$((I,P,E), $\texttt{START(1)})$ = (P,P,E)     & $\delta$((P,D,F), $\texttt{END(1)})$ = (I,D,F)       \\
+    $\delta$((I,P,F), $\texttt{END(2)})$ = (I,I,F)       & $\delta$((P,D,F), $\texttt{REPAIR(2)})$ = (P,I,F)    \\
+    $\delta$((I,P,F), $\texttt{TAKEN})$ = (I,P,E)        & $\delta$((P,D,F), $\texttt{TAKEN})$ = (P,D,E)         \\
+    $\delta$((I,P,F), $\texttt{BREAKDOWN(2)})$ = (I,D,F) & $\delta$((P,D,F), $\texttt{BREAKDOWN(1)})$ = (D,D,F)  \\
+    $\delta$((I,P,F), $\texttt{START(1)})$ = (P,P,F)     & $\delta$((D,I,E), $\texttt{REPAIR(1)})$ = (I,I,E)     \\
+    $\delta$((I,D,E), $\texttt{REPAIR(1)})$ = (I,I,E)    & $\delta$((D,I,E), $\texttt{PLACED})$ = (D,I,F)        \\
+    $\delta$((I,D,E), $\texttt{PLACED})$ = (I,D,F)       & $\delta$((D,I,E), $\texttt{START(2)})$ = (D,P,E)      \\
+    $\delta$((I,D,E), $\texttt{START(1)})$ = (P,D,E)     & $\delta$((D,I,F), $\texttt{REPAIR(1)})$ = (I,I,F)     \\
+    $\delta$((I,D,F), $\texttt{REPAIR(2)})$ = (I,I,F)    & $\delta$((D,I,F), $\texttt{TAKEN})$ = (D,I,E)         \\
+    $\delta$((I,D,F), $\texttt{TAKEN})$ = (I,D,E)        & $\delta$((D,I,F), $\texttt{START(2)})$ = (D,P,F)      \\
+    $\delta$((I,D,F), $\texttt{START(1)})$ = (P,D,F)     & $\delta$((D,P,E), $\texttt{REPAIR(1)})$ = (I,P,E)     \\
+    $\delta$((P,I,E), $\texttt{END(1)})$ = (I,I,E)       & $\delta$((D,P,E), $\texttt{END(2)})$ = (D,I,E)        \\
+    $\delta$((P,I,E), $\texttt{PLACED})$ = (P,I,F)       & $\delta$((D,P,E), $\texttt{PLACED})$ = (D,P,F)        \\
+    $\delta$((P,I,E), $\texttt{START(2)})$ = (P,P,E)     & $\delta$((D,P,E), $\texttt{BREAKDOWN(2)})$ = (D,D,E)  \\
+    $\delta$((P,I,E), $\texttt{BREAKDOWN(1)})$ = (D,I,E) & $\delta$((D,P,F), $\texttt{REPAIR(1)})$ = (I,P,F)     \\
+    $\delta$((P,I,F), $\texttt{END(1)})$ = (I,I,F)       & $\delta$((D,P,F), $\texttt{END(2)})$ = (D,I,F)        \\
+    $\delta$((P,I,F), $\texttt{TAKEN})$ = (P,I,E)        & $\delta$((D,P,F), $\texttt{TAKEN})$ = (D,P,E)         \\
+    $\delta$((P,I,F), $\texttt{END(2)})$ = (P,P,F)       & $\delta$((D,P,F), $\texttt{BREAKDOWN(2)})$ = (D,D,F)  \\
+    $\delta$((P,I,F), $\texttt{BREAKDOWN(1)})$ = (D,I,F) & $\delta$((D,D,E), $\texttt{REPAIR(1)})$ = (I,D,E)     \\
+    $\delta$((P,P,E), $\texttt{END(1)})$ = (I,P,E)       & $\delta$((D,D,E), $\texttt{REPAIR(2)})$ = (D,I,E)     \\
+    $\delta$((P,P,E), $\texttt{END(2)})$ = (P,I,E)       & $\delta$((D,D,E), $\texttt{PLACED})$ = (D,D,F)        \\
+    $\delta$((P,P,E), $\texttt{PLACED})$ = (P,P,F)       & $\delta$((D,D,F), $\texttt{REPAIR(1)})$ = (I,D,F)     \\
+    $\delta$((P,P,E), $\texttt{BREAKDOWN(2)})$ = (P,D,E) & $\delta$((D,D,F), $\texttt{REPAIR(2)})$ = (D,I,F)     \\
+    $\delta$((P,P,E), $\texttt{BREAKDOWN(1)})$ = (D,P,E) & $\delta$((D,D,F), $\texttt{TAKEN})$ = (D,D,E)         \\
 
-\begin{table}[H]\centering
-  \begin{tabular}{l}
-    $\delta$((P,D,F), $\texttt{TAKEN})$ = (P,D,E)         \\
-    $\delta$((P,D,F), $\texttt{BREAKDOWN(1)})$ = (D,D,F)  \\
-    $\delta$((D,I,E), $\texttt{REPAIR(1)})$ = (I,I,E)     \\
-    $\delta$((D,I,E), $\texttt{PLACED})$ = (D,I,F)        \\
-    $\delta$((D,I,E), $\texttt{START(2)})$ = (D,P,E)      \\
-    $\delta$((D,I,F), $\texttt{REPAIR(1)})$ = (I,I,F)     \\
-    $\delta$((D,I,F), $\texttt{TAKEN})$ = (D,I,E)         \\
-    $\delta$((D,I,F), $\texttt{START(2)})$ = (D,P,F)      \\
-    $\delta$((D,P,E), $\texttt{REPAIR(1)})$ = (I,P,E)     \\
-    $\delta$((D,P,E), $\texttt{END(2)})$ = (D,I,E)        \\
-    $\delta$((D,P,E), $\texttt{PLACED})$ = (D,P,F)        \\
-    $\delta$((D,P,E), $\texttt{BREAKDOWN(2)})$ = (D,D,E)  \\
-    $\delta$((D,P,F), $\texttt{REPAIR(1)})$ = (I,P,F)     \\
-    $\delta$((D,P,F), $\texttt{END(2)})$ = (D,I,F)        \\
-    $\delta$((D,P,F), $\texttt{TAKEN})$ = (D,P,E)         \\
-    $\delta$((D,P,F), $\texttt{BREAKDOWN(2)})$ = (D,D,F)  \\
-    $\delta$((D,D,E), $\texttt{REPAIR(1)})$ = (I,D,E)     \\
-    $\delta$((D,D,E), $\texttt{REPAIR(2)})$ = (D,I,E)     \\
-    $\delta$((D,D,E), $\texttt{PLACED})$ = (D,D,F)        \\
-    $\delta$((D,D,F), $\texttt{REPAIR(1)})$ = (I,D,F)     \\
-    $\delta$((D,D,F), $\texttt{REPAIR(2)})$ = (D,I,F)     \\
-    $\delta$((D,D,F), $\texttt{TAKEN})$ = (D,D,E)         \\
   \end{tabular}
-  \caption{Allowed transitions between states (part II).}
-  \label{tbl:04.02_delta_2}
+  \caption{Allowed transitions between states.}
+  \label{tbl:04.02_delta}
 \end{table}
 
 \begin{sidewaysfigure}
   \begin{figure}[H]\centering
     \scalebox{0.8}{\input{./figures/04.discrete_event_system/2/fsm.tex}}
-    \caption{}
-    \label{}
+    \caption{The state machine diagram of the single automaton that models the
+      complete behaviour of the manufacturing process.}
+    \label{fig:fsm_2}
   \end{figure}
 \end{sidewaysfigure}

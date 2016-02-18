@@ -1,0 +1,66 @@
+\section{Question 3}
+
+Translated into the language of the transition function, the four requirements
+demand the removal of the transitions of the following forms:
+
+\begin{align*}
+  \delta((I,*,F), \texttt{START(1)}) &= (P,*,*)
+  \delta((*,I,E), \texttt{START(1)}) &= (*,P,*)
+  \delta((I,D,*), \texttt{START(1)}) &= (P,*,*)
+  \delta((D,D,*), \texttt{START(1)}) &= (I,*,*)
+\end{align*}
+
+Twelve transitions are removed, bringing the total number of states of the
+complete DES to $54$. The transition function $\delta()$ is shown in table
+\ref{tbl:04.03_delta} and the new state machine diagram is illustrated in figure
+\ref{fig:fsm_3}.
+
+\begin{table}[H]\centering
+  \begin{tabular}{ll}
+    $\delta$((I,I,E), $\texttt{PLACED})$ = (I,I,F)       & $\delta$((P,P,F), $\texttt{END(1)})$ = (I,P,F)       \\
+    \sout{$\delta$((I,I,E), $\texttt{START(2)})$ = (I,P,E)}     & $\delta$((P,P,F), $\texttt{END(2)})$ = (P,I,F)       \\
+    $\delta$((I,I,E), $\texttt{START(1)})$ = (P,I,E)     & $\delta$((P,P,F), $\texttt{TAKEN})$ = (P,P,E)        \\
+    $\delta$((I,I,F), $\texttt{TAKEN})$ = (I,I,E)        & $\delta$((P,P,F), $\texttt{BREAKDOWN(2)})$ = (P,D,F) \\
+    \sout{$\delta$((I,I,F), $\texttt{START(2)})$ = (I,P,F)}     & $\delta$((P,P,F), $\texttt{BREAKDOWN(1)})$ = (D,P,F) \\
+    \sout{$\delta$((I,I,F), $\texttt{START(1)})$ = (P,I,F)}     & $\delta$((P,D,E), $\texttt{END(1)})$ = (I,D,E)       \\
+    $\delta$((I,P,E), $\texttt{END(2)})$ = (I,I,E)       & $\delta$((P,D,E), $\texttt{REPAIR(2)})$ = (P,I,E)    \\
+    $\delta$((I,P,E), $\texttt{PLACED})$ = (I,P,F)       & $\delta$((P,D,E), $\texttt{PLACED})$ = (P,D,F)       \\
+    $\delta$((I,P,E), $\texttt{BREAKDOWN(2)})$ = (I,D,E) & $\delta$((P,D,E), $\texttt{BREAKDOWN(1)})$ = (D,D,E) \\
+    $\delta$((I,P,E), $\texttt{START(1)})$ = (P,P,E)     & $\delta$((P,D,F), $\texttt{END(1)})$ = (I,D,F)       \\
+    $\delta$((I,P,F), $\texttt{END(2)})$ = (I,I,F)       & $\delta$((P,D,F), $\texttt{REPAIR(2)})$ = (P,I,F)    \\
+    $\delta$((I,P,F), $\texttt{TAKEN})$ = (I,P,E)        & $\delta$((P,D,F), $\texttt{TAKEN})$ = (P,D,E)         \\
+    $\delta$((I,P,F), $\texttt{BREAKDOWN(2)})$ = (I,D,F) & $\delta$((P,D,F), $\texttt{BREAKDOWN(1)})$ = (D,D,F)  \\
+    \sout{$\delta$((I,P,F), $\texttt{START(1)})$ = (P,P,F)}    & $\delta$((D,I,E), $\texttt{REPAIR(1)})$ = (I,I,E)     \\
+    $\delta$((I,D,E), $\texttt{REPAIR(1)})$ = (I,I,E)    & $\delta$((D,I,E), $\texttt{PLACED})$ = (D,I,F)        \\
+    $\delta$((I,D,E), $\texttt{PLACED})$ = (I,D,F)       & \sout{$\delta$((D,I,E), $\texttt{START(2)})$ = (D,P,E)}      \\
+    \sout{$\delta$((I,D,E), $\texttt{START(1)})$ = (P,D,E)}     & $\delta$((D,I,F), $\texttt{REPAIR(1)})$ = (I,I,F)     \\
+    $\delta$((I,D,F), $\texttt{REPAIR(2)})$ = (I,I,F)    & $\delta$((D,I,F), $\texttt{TAKEN})$ = (D,I,E)         \\
+    $\delta$((I,D,F), $\texttt{TAKEN})$ = (I,D,E)        & \sout{$\delta$((D,I,F), $\texttt{START(2)})$ = (D,P,F)}      \\
+    \sout{$\delta$((I,D,F), $\texttt{START(1)})$ = (P,D,F)}     & $\delta$((D,P,E), $\texttt{REPAIR(1)})$ = (I,P,E)     \\
+    $\delta$((P,I,E), $\texttt{END(1)})$ = (I,I,E)       & $\delta$((D,P,E), $\texttt{END(2)})$ = (D,I,E)        \\
+    $\delta$((P,I,E), $\texttt{PLACED})$ = (P,I,F)       & $\delta$((D,P,E), $\texttt{PLACED})$ = (D,P,F)        \\
+    \sout{$\delta$((P,I,E), $\texttt{START(2)})$ = (P,P,E)}     & $\delta$((D,P,E), $\texttt{BREAKDOWN(2)})$ = (D,D,E)  \\
+    $\delta$((P,I,E), $\texttt{BREAKDOWN(1)})$ = (D,I,E) & $\delta$((D,P,F), $\texttt{REPAIR(1)})$ = (I,P,F)     \\
+    $\delta$((P,I,F), $\texttt{END(1)})$ = (I,I,F)       & $\delta$((D,P,F), $\texttt{END(2)})$ = (D,I,F)        \\
+    $\delta$((P,I,F), $\texttt{TAKEN})$ = (P,I,E)        & $\delta$((D,P,F), $\texttt{TAKEN})$ = (D,P,E)         \\
+    \sout{$\delta$((P,I,F), $\texttt{END(2)})$ = (P,P,F)}       & $\delta$((D,P,F), $\texttt{BREAKDOWN(2)})$ = (D,D,F)  \\
+    $\delta$((P,I,F), $\texttt{BREAKDOWN(1)})$ = (D,I,F) & \sout{$\delta$((D,D,E), $\texttt{REPAIR(1)})$ = (I,D,E)}     \\
+    $\delta$((P,P,E), $\texttt{END(1)})$ = (I,P,E)       & $\delta$((D,D,E), $\texttt{REPAIR(2)})$ = (D,I,E)     \\
+    $\delta$((P,P,E), $\texttt{END(2)})$ = (P,I,E)       & $\delta$((D,D,E), $\texttt{PLACED})$ = (D,D,F)        \\
+    $\delta$((P,P,E), $\texttt{PLACED})$ = (P,P,F)       & \sout{$\delta$((D,D,F), $\texttt{REPAIR(1)})$ = (I,D,F)}     \\
+    $\delta$((P,P,E), $\texttt{BREAKDOWN(2)})$ = (P,D,E) & $\delta$((D,D,F), $\texttt{REPAIR(2)})$ = (D,I,F)     \\
+    $\delta$((P,P,E), $\texttt{BREAKDOWN(1)})$ = (D,P,E) & $\delta$((D,D,F), $\texttt{TAKEN})$ = (D,D,E)         \\
+  \end{tabular}
+  \caption{Allowed transitions between states given the four requirements.}
+  \label{tbl:04.03_delta}
+\end{table}
+
+\begin{sidewaysfigure}
+  \begin{figure}[H]\centering
+    \scalebox{0.8}{\input{./figures/04.discrete_event_system/3/fsm.tex}}
+    \caption{The state machine diagram of the single automaton that models the
+      complete behaviour of the manufacturing process, given the four
+      requirements.}
+    \label{fig:fsm_3}
+  \end{figure}
+\end{sidewaysfigure}
