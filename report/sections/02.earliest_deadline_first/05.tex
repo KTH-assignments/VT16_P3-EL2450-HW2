@@ -67,10 +67,10 @@ a function of time, for the two different cases of execution time.
 }\\
 
 
-Figure \ref{fig:02.5.3} shows the schedule calculated for each pendulum with all
+Figure \ref{fig:02.5.3} shows the executed schedule for each pendulum with all
 tasks having execution time $C_i = 10$ ms. Conversely, figure
 \ref{fig:02.5.3.small} shows the former schedule magnified over the period of
-the first 60 ms. Figure \ref{fig:02.5.4} illustrates that the schedule
+the first 120 ms. Figure \ref{fig:02.5.4} illustrates that the schedule
 is not feasible by ploting the overall usage of the CPU over the length of a
 schedule period, which is at all times $100\%$, indicative of the excessive
 processing load demanded.
@@ -79,21 +79,23 @@ processing load demanded.
 
   \begin{figure}[H]\centering
     \scalebox{1}{\input{./figures/02.earliest_deadline_first/5/5.3.small.tex}}
-    \caption{The calculated schedule for the three penduli restricted to the first
-      60 ms. \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$,
+    \caption{The executed schedule for the three penduli restricted to the first
+      120 ms. Notice how $J_3$ misses its deadlines.
+      \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$,
       \texttt{Orange}: $P_3$. $C_i = 10$ ms. The last figure shows the overall
       processor usage for verification purposes.}
   \label{fig:02.5.3.small}
   \end{figure}
 
-%  \begin{figure}[H]\centering
-    %\scalebox{0.7}{\input{./figures/02.earliest_deadline_first/5/gantt.tex}}
-    %\caption{A portion of the EDF schedule $\sigma$ for tasks $J_1, J_2, J_3$
-      %for $C_i = 10$ ms.  Shaded areas denote the waiting time. Notice that
-      %$J_3$ misses its deadlines consecutively, indicative of the inability of
-      %schedulability.}
-    %\label{fig:edf_10}
-  %\end{figure}
+  \begin{figure}[H]\centering
+    \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/5/gantt.tex}}
+    \caption{A portion of the calculated EDF schedule $\sigma$ for tasks
+      $J_1, J_2, J_3$ for $C_i = 10$ ms. Shaded areas denote the waiting time.
+      Notice that $J_3$ misses its deadlines consecutively (as is apparent in
+      the interval $[100, 110]$ ms), indicative of the inability of
+      schedulability.}
+    \label{fig:edf_10}
+  \end{figure}
 \end{sidewaysfigure}
 
 
@@ -102,7 +104,7 @@ processing load demanded.
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]\centering
       \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/5/5.3.tex}}
-      \caption{The calculated schedule for the three penduli.
+      \caption{The executed schedule for the three penduli.
         \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$, \texttt{Orange}: $P_3$.
         $C_i = 10$ ms.}
       \label{fig:02.5.3}

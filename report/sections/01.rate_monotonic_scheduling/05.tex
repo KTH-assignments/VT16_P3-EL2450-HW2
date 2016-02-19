@@ -69,7 +69,7 @@ the two different cases of execution time.
 }\\
 
 
-Figure \ref{fig:01.5.3} shows the schedule calculated for each pendulum with all
+Figure \ref{fig:01.5.3} shows the executed schedule for each pendulum with all
 jobs having execution time $C_i = 10$ ms. Conversely, figure
 \ref{fig:01.5.3.small} shows the former schedule magnified over the period of
 the first 60 ms. Figure \ref{fig:01.5.4} illustrates that the schedule
@@ -80,7 +80,7 @@ processing load demanded.
 \begin{sidewaysfigure}
   \begin{figure}[H]\centering
     \scalebox{1}{\input{./figures/01.rate_monotonic_scheduling/5/5.3.small.tex}}
-    \caption{The calculated schedule for the three penduli restricted to the first
+    \caption{The executed schedule for the three penduli restricted to the first
       60 ms. \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$,
       \texttt{Orange}: $P_3$. $C_i = 10$ ms. The last figure shows the overall
       processor usage for verification purposes.}
@@ -89,10 +89,10 @@ processing load demanded.
 
   \begin{figure}[H]\centering
     \scalebox{0.7}{\input{./figures/01.rate_monotonic_scheduling/5/gantt.tex}}
-    \caption{A portion of the RM schedule $\sigma$ for tasks $J_1, J_2, J_3$ for
-      $C_i = 10$ ms.  Shaded areas denote the waiting time. Notice that $J_3$
-      misses its deadlines consecutively, indicative of the inability of
-      schedulability.}
+    \caption{A portion of the calculated RM schedule $\sigma$ for tasks
+      $J_1, J_2, J_3$ for $C_i = 10$ ms.  Shaded areas denote the waiting time.
+      Notice that $J_3$ misses its deadlines consecutively, indicative of the
+      inability of schedulability.}
     \label{fig:rm_10}
   \end{figure}
 \end{sidewaysfigure}
@@ -103,7 +103,7 @@ processing load demanded.
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]\centering
       \scalebox{0.7}{\input{./figures/01.rate_monotonic_scheduling/5/5.3.tex}}
-      \caption{The calculated schedule for the three penduli.
+      \caption{The executed schedule for the three penduli.
         \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$, \texttt{Orange}: $P_3$.
         $C_i = 10$ ms.}
       \label{fig:01.5.3}

@@ -1,6 +1,6 @@
 \subsubsection{Question 4}
 
-Figure \ref{fig:02.4.1} shows the schedule calculated for each pendulum over a
+Figure \ref{fig:02.4.1} shows the executed schedule for each pendulum over a
 timespan of $lcm(20,29,35) = 4060$ ms: exactly one period of the schedule.
 Conversely, figure \ref{fig:02.4.1.small} shows the former schedule magnified
 over the period of the first 60 ms.
@@ -13,7 +13,7 @@ aforementioned timespan.
 
   \begin{figure}[H]\centering
     \scalebox{1}{\input{./figures/02.earliest_deadline_first/4/4.1.small.tex}}
-    \caption{The calculated schedule for the three penduli restricted to the first
+    \caption{The executed schedule for the three penduli restricted to the first
         60 ms. \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$,
         \texttt{Orange}: $P_3$. $C_i = 6$ ms. The last figure shows the overall
       processor usage for verification purposes.}
@@ -22,8 +22,8 @@ aforementioned timespan.
 
   \begin{figure}[H]\centering
     \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/2/gantt.tex}}
-    \caption{A portion of the EDF schedule $\sigma$ for tasks $J_1, J_2, J_3$.
-      Shaded areas denote the waiting time.}
+    \caption{A portion of the calculated EDF schedule $\sigma$ for tasks
+      $J_1, J_2, J_3$. Shaded areas denote the waiting time.}
     \label{fig:edf_6}
   \end{figure}
 
@@ -34,7 +34,7 @@ aforementioned timespan.
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]\centering
       \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/4/4.1.tex}}
-      \caption{The calculated schedule for the three penduli.
+      \caption{The executed schedule for the three penduli.
        \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$, \texttt{Orange}: $P_3$.
        $C_i = 6$ ms.}
       \label{fig:02.4.1}
