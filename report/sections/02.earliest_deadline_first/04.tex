@@ -1,9 +1,7 @@
 \subsubsection{Question 4}
 
-Figure \ref{fig:02.4.1} shows the executed schedule for each pendulum over a
-timespan of $lcm(20,29,35) = 4060$ ms: exactly one period of the schedule.
-Conversely, figure \ref{fig:02.4.1.small} shows the former schedule magnified
-over the period of the first 60 ms.
+Figure \ref{fig:02.4.1.small} shows the former schedule magnified over the
+period of the first 60 ms.
 As per the response to question 2, figure \ref{fig:02.4.2} illustrates that the
 schedule is indeed feasible by plotting the overall usage of the CPU over the
 aforementioned timespan.
@@ -29,25 +27,9 @@ aforementioned timespan.
 
 \end{sidewaysfigure}
 
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]\centering
-      \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/4/4.1.tex}}
-      \caption{The executed schedule for the three pendula.
-       \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$, \texttt{Orange}: $P_3$.
-       $C_i = 6$ ms.}
-      \label{fig:02.4.1}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]\centering
-    \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/4/4.2.tex}}
-    \caption{The overall processing usage. Notice that it is at most at $100\%$.
-       $C_i = 6$ ms.}
-      \label{fig:02.4.2}
-  \end{figure}
-\end{minipage}
-\end{minipage}
-}
+\begin{figure}[H]\centering
+  \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/4/4.2.tex}}
+  \caption{The overall processing usage. Notice that it is at most at $100\%$.
+     $C_i = 6$ ms.}
+    \label{fig:02.4.2}
+\end{figure}

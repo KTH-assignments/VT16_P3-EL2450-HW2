@@ -67,10 +67,8 @@ a function of time, for the two different cases of execution time.
 }\\
 
 
-Figure \ref{fig:02.5.3} shows the executed schedule for each pendulum with all
-tasks having execution time $C_i = 10$ ms. Conversely, figure
-\ref{fig:02.5.3.small} shows the former schedule magnified over the period of
-the first 120 ms. Figure \ref{fig:02.5.4} illustrates that the schedule
+Figure \ref{fig:02.5.3.small} shows the former schedule magnified over the
+period of the first 120 ms. Figure \ref{fig:02.5.4} illustrates that the schedule
 is not feasible by ploting the overall usage of the CPU over the length of a
 schedule period, which is at all times $100\%$, indicative of the excessive
 processing load demanded.
@@ -98,26 +96,9 @@ processing load demanded.
   \end{figure}
 \end{sidewaysfigure}
 
-
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]\centering
-      \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/5/5.3.tex}}
-      \caption{The executed schedule for the three pendula.
-        \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$, \texttt{Orange}: $P_3$.
-        $C_i = 10$ ms.}
-      \label{fig:02.5.3}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]\centering
-    \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/5/5.4.tex}}
-    \caption{The overall processing usage. Notice that it is always at $100\%$.
-      $C_i = 10$ ms.}
-      \label{fig:02.5.4}
-  \end{figure}
-\end{minipage}
-\end{minipage}
-}
+\begin{figure}[H]\centering
+  \scalebox{0.7}{\input{./figures/02.earliest_deadline_first/5/5.4.tex}}
+  \caption{The overall processing usage. Notice that it is always at $100\%$.
+    $C_i = 10$ ms.}
+    \label{fig:02.5.4}
+\end{figure}
