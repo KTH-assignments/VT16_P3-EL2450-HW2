@@ -2,9 +2,19 @@
 
 Figure \ref{fig:01.4.1} shows the actual execution schedule for each pendulum
 over a timespan of $lcm(20,29,35) = 4060$ ms: exactly one period of the schedule.
+Conversely, figure \ref{fig:01.4.1.small} shows the former schedule magnified
+over the period of the first 60 clock ticks.
 As per the response to question 2, figure \ref{fig:01.4.2} illustrates that the
 schedule is indeed feasible by plotting the overall usage of the CPU over the
 aforementioned timespan.
+
+\begin{figure}[H]\centering
+  \scalebox{1}{\input{./figures/01.rate_monotonic_scheduling/4/4.1.small.tex}}
+  \caption{The calculated schedule for the three penduli restricted to the first
+    60ms. \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$,
+    \texttt{Orange}: $P_3$. $C_i = 6$ ms.}
+  \label{fig:01.4.1.small}
+\end{figure}
 
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}

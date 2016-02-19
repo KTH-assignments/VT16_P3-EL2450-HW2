@@ -55,17 +55,18 @@ the initial state $Q_m \equiv \{q_0\}$.
 
 Since there are $18$ states, the maximum number of transitions between them is
 $18^2$. However, it is assumed that transitions between states are caused by
-single events $e \in E$ ($E$ is defined below), i.e. two events cannot happen
+single events $e \in E$, i.e. two events cannot happen
 at the same time. This fact decreases the number of allowed transitions from
 $18^2$ to $66$.
 
 The transition function $\delta()$ is shown in table \ref{tbl:04.02_delta}.
-The state machine diagram is illustrated in figure \ref{fig:fsm_2}. From this
-and the size of the number of transitions we can discern that synthesis of
-separate processes into one, even simple ones like these in this exercise, can
-lead to a DES whose complexity is higher than that of the separate DES.
+The state machine diagram is illustrated in figure \ref{fig:fsm_2} of the
+appendix. From this and the size of the number of transitions we can discern
+that synthesis of separate processes into one, even simple ones like these in
+this exercise, can lead to a DES whose complexity is higher than that of the
+separate DES.
 
-\begin{table}[H]\centering
+\begin{table}\centering
   \begin{tabular}{ll}
     $\delta$((I,I,E), $\texttt{PLACED})$ = (I,I,F)       & $\delta$((P,P,F), $\texttt{END(1)})$ = (I,P,F)       \\
     $\delta$((I,I,E), $\texttt{START(2)})$ = (I,P,E)     & $\delta$((P,P,F), $\texttt{END(2)})$ = (P,I,F)       \\
@@ -100,17 +101,7 @@ lead to a DES whose complexity is higher than that of the separate DES.
     $\delta$((P,P,E), $\texttt{PLACED})$ = (P,P,F)       & $\delta$((D,D,F), $\texttt{REPAIR(1)})$ = (I,D,F)     \\
     $\delta$((P,P,E), $\texttt{BREAKDOWN(2)})$ = (P,D,E) & $\delta$((D,D,F), $\texttt{REPAIR(2)})$ = (D,I,F)     \\
     $\delta$((P,P,E), $\texttt{BREAKDOWN(1)})$ = (D,P,E) & $\delta$((D,D,F), $\texttt{TAKEN})$ = (D,D,E)         \\
-
   \end{tabular}
   \caption{Allowed transitions between states.}
   \label{tbl:04.02_delta}
 \end{table}
-
-\begin{sidewaysfigure}
-  \begin{figure}[H]\centering
-    \scalebox{0.8}{\input{./figures/04.discrete_event_system/2/fsm.tex}}
-    \caption{The state machine diagram of the single automaton that models the
-      complete behaviour of the manufacturing process.}
-    \label{fig:fsm_2}
-  \end{figure}
-\end{sidewaysfigure}

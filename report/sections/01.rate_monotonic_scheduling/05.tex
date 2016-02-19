@@ -70,10 +70,20 @@ the two different cases of execution time.
 
 
 Figure \ref{fig:01.5.3} shows the schedule calculated for each pendulum with all
-jobs having execution time $C_i = 10$ ms.  Figure \ref{fig:01.5.4} illustrates
-that the schedule is not feasible by ploting the overall usage of the CPU over
-the length of a schedule period, which is at all times $100\%$, indicative of
-the excessive processing load demanded.
+jobs having execution time $C_i = 10$ ms. Conversely, figure
+\ref{fig:01.5.3.small} shows the former schedule magnified over the period of
+the first 60 clock ticks. Figure \ref{fig:01.5.4} illustrates that the schedule
+is not feasible by ploting the overall usage of the CPU over the length of a
+schedule period, which is at all times $100\%$, indicative of the excessive
+processing load demanded.
+
+\begin{figure}[H]\centering
+  \scalebox{1}{\input{./figures/01.rate_monotonic_scheduling/5/5.3.small.tex}}
+  \caption{The calculated schedule for the three penduli restricted to the first
+    60 ms. \texttt{Blue}: $P_1$, \texttt{Red}: $P_2$,
+    \texttt{Orange}: $P_3$. $C_i = 10$ ms.}
+\label{fig:01.5.3.small}
+\end{figure}
 
 
 \noindent\makebox[\textwidth][c]{%
