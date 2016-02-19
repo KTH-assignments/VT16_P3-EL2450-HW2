@@ -1,62 +1,69 @@
 \subsection{Question 2}
 
-In order for the system to be stable the eigenvalues of $(I - (t-kh)BK)$ should
-lie inside the unit circle. Assuming $K = [K_1\ K_2]$:
+In order for the system to be stable, the eigenvalues of matrix
 
 \begin{align*}
-  I - (t-kh)BK &=
   \begin{bmatrix}
-    1 & 0 \\
-    0 & 1
-  \end{bmatrix}
-  - (t-kh)
-  \begin{bmatrix}
-    1 \\
-    1
-  \end{bmatrix}
-  \begin{bmatrix}
-    K_1 & K_2
-  \end{bmatrix}
-  \\
-  ~&=
-  \begin{bmatrix}
-    1 - K_1 (t-kh) & -K_2 (t-kh) \\
-    -K_1 (t-kh)    & 1 - K_2 (t-kh)
+    1 - (h-\tau)K & \tau \\
+    -K            & 0 \\
   \end{bmatrix}
 \end{align*}
 
-The characteristic polynomial of this matrix is
+should lie inside the unit circle.
+
+These eigenvalues $\lambda_i$ can be found from
 
 \begin{align*}
-  |\lambda I - (I - (t-kh)BK)| &= (\lambda-1)^2 + (\lambda-1)(K_1 + K_2)(t-kh) \\
-                               &= \lambda^2 + \lambda\big((t-kh)(K_1 + K_2)-2\big) + 1 - (K_1 + K_2)(t-kh)
+  \Bigg| \lambda I -
+  \begin{bmatrix}
+    1 - (h-\tau)K & \tau \\
+    -K            & 0 \\
+  \end{bmatrix}
+  \Bigg|
+  &=  0 \\
+  \Bigg|
+  \begin{bmatrix}
+    \lambda -1 + (h-\tau)K & -\tau \\
+    K                     & \lambda \\
+  \end{bmatrix}
+  \Bigg|
+  &= 0 \\
+  \lambda^2 + \lambda (K(h-\tau)-1) + K\tau &= 0 \\
 \end{align*}
 
-By Jury's criterion the system is stable if the following inequalities hold:
+Where $\prod \lambda_i = K\tau$ and $\sum \lambda_i = -(K(h-\tau)-1)$.
 
-\begin{align*}
-  \left.\begin{aligned}
-    1 - (K_1 + K_2)(t-kh)   &< 1 \\
-    1 - (t-kh)((K_1 + K_2)) &> (t-kh)(K_1 + K_2) -2 -1 \\
-    1 - (t-kh)((K_1 + K_2)) &> -(t-kh)(K_1 + K_2) +2 -1
-  \end{aligned}\ \right\}
-\end{align*}
-
-For $t = kh + \tau$
+The stability triangle dictates that the system is stable if the following
+inequalities hold:
 
 \begin{align*}
   \left.\begin{aligned}
-    (K_1 + K_2) \tau &> 0 \\
-    2 (K_1 + K_2) \tau &< 4
-  \end{aligned}\ \right\}
+      K\tau &<  1 \\
+      K\tau &< K(h-\tau) -1 -1 \\
+      K\tau &> -K(h-\tau) +1 -1 \\
+  \end{aligned}\ \right\} \Leftrightarrow
 \end{align*}
 
-or $$0 < (K_1 + K_2) \tau < 2$$
+\begin{align*}
+  \dfrac{Kh-2}{2} < &\ K\tau < 1  \Leftrightarrow \\
+  \dfrac{1}{2} - \dfrac{1}{Kh} < &\ \dfrac{\tau}{h} < \dfrac{1}{Kh}
+\end{align*}
 
-which means that
-$$0 < h K B \dfrac{\tau}{h} < 2$$
+And, since $K > 0$ and $0 \leq \tau \leq h$:
 
-\begin{equation}
-  0 < \dfrac{\tau}{h} < 2(hKB)^{-1}
-  \label{eq:03.2}
-\end{equation}
+$$ \text{max} \Bigg(0, \dfrac{1}{2} - \dfrac{1}{Kh}\Bigg)
+< \dfrac{\tau}{h} <
+\text{min} \Bigg(1, \dfrac{1}{Kh} \Bigg) $$
+
+The stability region is illustrated in figure \ref{fig:03.stability_region}.
+The system is stable if the combination of the $Kh$ and $\tau/h$ quantities lies
+inside the area bounded by the curves and the vertical axis.
+
+\begin{figure}[H]\centering
+  \scalebox{1}{\input{./figures/03.networked_control_systems/2/stability_region.tex}}
+  \caption{The stability region is defined here as the area in the $x,y$ plane
+    that is bounded by the curves: $x=0$, $y=1$, $y=0$, $y = 0.5-1/x$ and
+    $y=1/x$. The $x$ axis represents the product $Kh$. The $y$ axis represents
+    the magnitude of the fraction $\tau/h$.}
+  \label{fig:03.stability_region}
+\end{figure}

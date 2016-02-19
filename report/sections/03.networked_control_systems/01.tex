@@ -7,19 +7,66 @@ From the continuous plant
         y(t) &= Cx(t)
 \end{align*}
 
-and the fact that $A=0$ we can derive the equation for the discretized state,
-where $t \in [kh, kh + h)$:
+and the facts that $A=0, B=1, \tau \in [0,h]$ we can derive the equation for the
+discretized state
 
 \begin{align*}
-  x(t) &= e^{A(t-kh)} x(kh) + \int_{kh}^t e^{A(t-s)} B u(s)ds \\
-      ~&= x(kh) + \int_{kh}^t B (-Kx(kh))ds \\
-      ~&= x(kh) - (t-kh) B K x(kh) \\
-      ~&= (I - (t-kh)BK) x(kh)
+  x[(k+1)h] &= \Phi x[kh] + \Gamma_0 u[kh] + \Gamma_1 u[(k-1)h] \\
+  x[(k+1)h] &= x[kh] + (h-\tau)u[kh] + \tau u[(k-1)h] \\
 \end{align*}
 
-and
+where
 
-\begin{equation}
-  y(t) = C x(t) = C \big(I - (t-kh)BK\big) x(kh)
-  \label{eq:03.1}
-\end{equation}
+\begin{align*}
+  \Phi      &= e^{Ah} = 1 \\
+  \Gamma_0  &= \int_{0}^{h-\tau} e^{As} ds B = h-\tau \\
+  \Gamma_1  &= e^{A(h-t)} \int_{0}^{\tau} e^{As} ds B = \tau
+\end{align*}
+
+Due to the additional delayed input term $u[(k-1)h]$, the system's state is
+augmented and is now considered as the vector
+
+\begin{align*}
+  s =
+  \begin{bmatrix}
+    x[kh] \\
+    u[(k-1)h]
+  \end{bmatrix}
+\end{align*}
+
+Considering the fact that $u[kh] = -K x[kh]$, the equations of the closed-loop
+system thus become
+
+\begin{align*}
+  \begin{bmatrix}
+    x[(k+1)h] \\
+    u[kh]
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \Phi - \Gamma_0 K & \Gamma_1 \\
+    -K                & 0 \\
+  \end{bmatrix}
+  \begin{bmatrix}
+    x[kh] \\
+    u[(k-1)h]
+  \end{bmatrix}
+\end{align*}
+
+or
+
+\begin{align*}
+  \begin{bmatrix}
+    x[(k+1)h] \\
+    u[kh]
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    1 - (h-\tau)K & \tau \\
+    -K            & 0 \\
+  \end{bmatrix}
+  \begin{bmatrix}
+    x[kh] \\
+    u[(k-1)h]
+  \end{bmatrix}
+\end{align*}
