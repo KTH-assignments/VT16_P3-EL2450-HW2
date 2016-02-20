@@ -1,0 +1,8 @@
+\section{Question 4}
+
+The term for describing the regulation of the logical behavior of a DES in order
+to fulfill certain specifications is known as ``Supervisory Control". The events
+of interest, \texttt{START} and \texttt{REPAIR}, are enabled or disabled by the
+controller in such a way that the controller might not enable, for example, the
+$\texttt{START(1)}$ signal (event) until it has certainty that the actual state is:
+$(M_1, B, M_2) \equiv \texttt{(IDLE(1)}, \texttt{EMPTY}, \texttt{!DOWN(2)})$.
