@@ -10,10 +10,10 @@ demand the removal of the transitions of the following forms:
   \delta((D,D,*), \texttt{REPAIR(1)}) &= (I,*,*) \\
 \end{align*}
 
-Twelve transitions are removed, bringing the total number of states of the
-complete DES to $54$. The transition function $\delta()$ is shown in table
-\ref{tbl:04.03_delta} and the new state machine diagram is illustrated in figure
-\ref{fig:fsm_3} of the appendix.
+Nince transitions are removed, bringing the total number of transitions between
+states of the complete DES to $57$. The transition function $\delta()$ is shown
+in table \ref{tbl:04.03_delta} and the new state machine diagram is illustrated
+in figure \ref{fig:fsm_3} of the appendix.
 
 \begin{table}\centering
   \begin{tabular}{ll}
@@ -35,7 +35,7 @@ complete DES to $54$. The transition function $\delta()$ is shown in table
     $\delta$((I,D,E), $\texttt{PLACED})$ = (I,D,F)       & \sout{$\delta$((D,I,E), $\texttt{START(2)})$ = (D,P,E)}      \\
     \sout{$\delta$((I,D,E), $\texttt{START(1)})$ = (P,D,E)}     & $\delta$((D,I,F), $\texttt{REPAIR(1)})$ = (I,I,F)     \\
     $\delta$((I,D,F), $\texttt{REPAIR(2)})$ = (I,I,F)    & $\delta$((D,I,F), $\texttt{TAKEN})$ = (D,I,E)         \\
-    $\delta$((I,D,F), $\texttt{TAKEN})$ = (I,D,E)        & \sout{$\delta$((D,I,F), $\texttt{START(2)})$ = (D,P,F)}      \\
+    $\delta$((I,D,F), $\texttt{TAKEN})$ = (I,D,E)        & $\delta$((D,I,F), $\texttt{START(2)})$ = (D,P,F)      \\
     \sout{$\delta$((I,D,F), $\texttt{START(1)})$ = (P,D,F)}     & $\delta$((D,P,E), $\texttt{REPAIR(1)})$ = (I,P,E)     \\
     $\delta$((P,I,E), $\texttt{END(1)})$ = (I,I,E)       & $\delta$((D,P,E), $\texttt{END(2)})$ = (D,I,E)        \\
     $\delta$((P,I,E), $\texttt{PLACED})$ = (P,I,F)       & $\delta$((D,P,E), $\texttt{PLACED})$ = (D,P,F)        \\
@@ -43,7 +43,7 @@ complete DES to $54$. The transition function $\delta()$ is shown in table
     $\delta$((P,I,E), $\texttt{BREAKDOWN(1)})$ = (D,I,E) & $\delta$((D,P,F), $\texttt{REPAIR(1)})$ = (I,P,F)     \\
     $\delta$((P,I,F), $\texttt{END(1)})$ = (I,I,F)       & $\delta$((D,P,F), $\texttt{END(2)})$ = (D,I,F)        \\
     $\delta$((P,I,F), $\texttt{TAKEN})$ = (P,I,E)        & $\delta$((D,P,F), $\texttt{TAKEN})$ = (D,P,E)         \\
-    \sout{$\delta$((P,I,F), $\texttt{END(2)})$ = (P,P,F)}       & $\delta$((D,P,F), $\texttt{BREAKDOWN(2)})$ = (D,D,F)  \\
+    $\delta$((P,I,F), $\texttt{END(2)})$ = (P,P,F)       & $\delta$((D,P,F), $\texttt{BREAKDOWN(2)})$ = (D,D,F)  \\
     $\delta$((P,I,F), $\texttt{BREAKDOWN(1)})$ = (D,I,F) & \sout{$\delta$((D,D,E), $\texttt{REPAIR(1)})$ = (I,D,E)}     \\
     $\delta$((P,P,E), $\texttt{END(1)})$ = (I,P,E)       & $\delta$((D,D,E), $\texttt{REPAIR(2)})$ = (D,I,E)     \\
     $\delta$((P,P,E), $\texttt{END(2)})$ = (P,I,E)       & $\delta$((D,D,E), $\texttt{PLACED})$ = (D,D,F)        \\
